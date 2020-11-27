@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "961381259040",
+    "firebase_url": "https://projeto-localizacao-86372.firebaseio.com",
+    "project_id": "projeto-localizacao-86372",
+    "storage_bucket": "projeto-localizacao-86372.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:961381259040:android:418a5e6f2146e1f842e945",
+        "android_client_info": {
+          "package_name": "com.ramon.projeto_localizacao"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "961381259040-rss1761qne2f8l58k3oq8v3tpdqmbb4q.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBZCK4nMmIMSxdBJJeWgSfScfuDzUWtvuQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "961381259040-rss1761qne2f8l58k3oq8v3tpdqmbb4q.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
