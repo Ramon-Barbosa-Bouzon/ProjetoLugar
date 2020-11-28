@@ -14,10 +14,22 @@ import android.location.LocationManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.ramon.projeto_localizacao.R;
+import com.ramon.projeto_localizacao.model.DateHelper;
+import com.ramon.projeto_localizacao.model.ListLocalizacaoAdapter;
+import com.ramon.projeto_localizacao.model.Lugar;
+
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 
 public class CadastroLugar extends AppCompatActivity {
 
@@ -25,9 +37,17 @@ public class CadastroLugar extends AppCompatActivity {
     private LocationListener locationListener;
     private static final int REQUEST_CODE_GPS = 1001;
 
-    private TextView locationTextView;
     private double latitudeAtual;
     private double longitudeAtual;
+    private EditText nomeLugar;
+    private EditText descricaoLugar;
+    private TextView locationTextView;
+    private TextView dataLugar;
+    private Calendar calendar;
+    private SimpleDateFormat dateFormat;
+    private String data;
+
+    private DatabaseReference mDatabase;
 
 
     @Override
@@ -35,6 +55,15 @@ public class CadastroLugar extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cadastro_lugar);
+
+
+        calendar = Calendar.getInstance();
+
+        dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        data = dateFormat.format(calendar.getTime());
+        dataLugar = findViewById(R.id.dataTextView);
+        dataLugar.setText(data);
+
 
         locationManager = (LocationManager)
                 getSystemService(Context.LOCATION_SERVICE);
@@ -107,15 +136,37 @@ public class CadastroLugar extends AppCompatActivity {
             }
         }
     }
+
+
     @Override
     protected void onStop() {
         super.onStop();
         locationManager.removeUpdates(locationListener);
     }
 
-    public void onClick(View view) {
-        Uri gmmIntentUri = Uri.parse(String.format("geo:%f,%f",latitudeAtual, longitudeAtual
-        ));
+
+    public void onClick(View view) throws ParseException {
+        mDatabase = FirebaseDatabase.getInstance().getReference().child("Lugar");
+
+
+        descricaoLugar = findViewById(R.id.editTextDescricaoLugar);
+        nomeLugar = findViewById(R.id.editTextNomeLugar);
+
+        Lugar lugar = new Lugar();
+        lugar.setNomeLugar(nomeLugar.getText().toString());
+        lugar.setDescricao(descricaoLugar.getText().toString());
+        lugar.setLat(latitudeAtual);
+        lugar.setLong(longitudeAtual);
+
+        lugar.setDataCadastro(dateFormat.format(calendar.getTime()));
+
+        String id = nomeLugar.getText().toString() + calendar.getTimeInMillis();
+
+
+        mDatabase.child(id).setValue(lugar);
+        mDatabase.push();
+        Toast.makeText(CadastroLugar.this, "Dados Salvos com sucesso", Toast.LENGTH_LONG).show();
+
 
         Intent intent = new Intent(getApplicationContext(), MainActivity.class);
         startActivity(intent);

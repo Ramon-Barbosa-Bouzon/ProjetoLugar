@@ -6,28 +6,19 @@ import java.io.Serializable;
 import java.util.Date;
 
 public class Lugar implements Comparable <Lugar>, Serializable {
-    private int id;
+
     private String nomeLugar;
-    private Date DataCadastro;
+    private String DataCadastro;
     private String Descricao;
     private double Lat;
     private double Long;
 
-    public Date getDataCadastro() {
+    public String getDataCadastro() {
 
         return DataCadastro;
     }
 
-    @SerializedName("_id")
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public void setDataCadastro(Date dataCadastro) {
+    public void setDataCadastro(String dataCadastro) {
 
         DataCadastro = dataCadastro;
     }

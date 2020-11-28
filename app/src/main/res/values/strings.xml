@@ -2,5 +2,6 @@
     <string name="app_name">Projeto-Localizacao</string>
     <string name="no_gps_no_app">Para registrar um lugar e necessario o GPS</string>
     <string name="data_nome">%s data de registro: %s</string>
-    <string name="Lat_long">Latitude: %i Longitude: %i</string>
+    <string name="data_atual">Data atual: %s</string>
+    <string name="Lat_long">Latitude: %2f Longitude: %2f</string>
 </resources>
