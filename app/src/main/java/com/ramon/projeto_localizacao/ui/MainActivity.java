@@ -1,18 +1,14 @@
 package com.ramon.projeto_localizacao.ui;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 
-import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -31,7 +27,8 @@ public class MainActivity extends AppCompatActivity {
     private ListLocalizacaoAdapter adapter;
     private RecyclerView lugarRecyclerView;
     private DatabaseReference mDatabase;
-    //Context contex = ;
+
+
 
 
 
@@ -41,31 +38,27 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
-
-        /*LinearLayoutManager layoutManager
-                = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, true);
-        lugarRecyclerView = findViewById(R.id.recyclerViewLugar);
-        lugarRecyclerView.setLayoutManager(layoutManager);*/
-
         lugarRecyclerView = findViewById(R.id.recyclerViewLugar);
         lugarRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         lugar = new ArrayList<>();
 
 
-
-
         mDatabase = FirebaseDatabase.getInstance().getReference("Lugar");
+
 
         mDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for(DataSnapshot ds: snapshot.getChildren()){
                     Lugar l = ds.getValue(Lugar.class);
+                    l.setId(ds.getKey());
                     lugar.add(l);
 
                 }
                 adapter = new ListLocalizacaoAdapter(lugar);
                 lugarRecyclerView.setAdapter(adapter);
+
+
             }
 
             @Override
@@ -74,7 +67,10 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+
     }
+
+
 
     public void onClick(View view) {
         Intent intent = new Intent(getApplicationContext(), CadastroLugar.class);

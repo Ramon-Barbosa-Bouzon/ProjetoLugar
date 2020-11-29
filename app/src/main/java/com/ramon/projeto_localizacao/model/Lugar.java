@@ -1,5 +1,6 @@
 package com.ramon.projeto_localizacao.model;
 
+import com.google.firebase.database.Exclude;
 import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
@@ -12,6 +13,17 @@ public class Lugar implements Comparable <Lugar>, Serializable {
     private String Descricao;
     private double Lat;
     private double Long;
+    private String id;
+
+    @Exclude
+    public String getId() {
+        return id;
+    }
+
+    @Exclude
+    public void setId(String id) {
+        this.id = id;
+    }
 
     public String getDataCadastro() {
 
