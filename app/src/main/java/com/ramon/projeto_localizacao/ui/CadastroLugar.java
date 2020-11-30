@@ -174,18 +174,6 @@ public class CadastroLugar extends AppCompatActivity {
 
     }
 
-    public void onEditarLugar(String key, Lugar l){
-
-        l.setNomeLugar(nomeLugar.getText().toString());
-        l.setDescricao(descricaoLugar.getText().toString());
-
-        mDatabase.child(key).setValue(l);
-        mDatabase.push();
-
-    }
-
-
-
     public void voltar(View view){
         Intent intent = new Intent(getApplicationContext(), MainActivity.class);
         startActivity(intent);

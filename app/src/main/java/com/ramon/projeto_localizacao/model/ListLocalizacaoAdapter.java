@@ -67,11 +67,7 @@ public class ListLocalizacaoAdapter extends RecyclerView.Adapter {
         Lugar l = lugar.get(position);
         ViewHolder viewHolder = (ViewHolder)holder;
 
-        calendar = Calendar.getInstance();
-        dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-        data = dateFormat.format(calendar.getTime());
-
-        String nomel = l.getNomeLugar()+"\ndata de registro: "+data;
+        String nomel = l.getNomeLugar()+"\ndata de registro: "+l.getDataCadastro();
 
         String latLong = "Latitude: "+l.getLat()+"\nLongitude: "+l.getLong();
 
