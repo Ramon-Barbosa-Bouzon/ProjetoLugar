@@ -28,6 +28,8 @@ import com.ramon.projeto_localizacao.R;
 import com.ramon.projeto_localizacao.ui.CadastroLugar;
 import com.ramon.projeto_localizacao.ui.MainActivity;
 
+import org.w3c.dom.Text;
+
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.EventListener;
@@ -39,12 +41,6 @@ public class ListLocalizacaoAdapter extends RecyclerView.Adapter {
 
     Context context;
     private List<Lugar> lugar;
-
-
-
-    private Calendar calendar;
-    private SimpleDateFormat dateFormat;
-    private String data;
     private DatabaseReference mDatabase;
 
 
@@ -128,7 +124,6 @@ public class ListLocalizacaoAdapter extends RecyclerView.Adapter {
 
             builder.setView(layout);
 
-            // Set up the buttons
             builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
@@ -153,7 +148,6 @@ public class ListLocalizacaoAdapter extends RecyclerView.Adapter {
                         }else {
                             notifyItemChanged(getAdapterPosition());
                             mDatabase.child(key).setValue(lugar.get(getAdapterPosition()));
-                            mDatabase.child(key);
                             mDatabase.push();
                         }
                     }
@@ -197,7 +191,5 @@ public class ListLocalizacaoAdapter extends RecyclerView.Adapter {
 
             return false;
         }
-
     }
-
 }

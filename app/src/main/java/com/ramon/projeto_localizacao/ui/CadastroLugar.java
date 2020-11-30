@@ -41,9 +41,7 @@ public class CadastroLugar extends AppCompatActivity {
     private Calendar calendar;
     private SimpleDateFormat dateFormat;
     private String data;
-
     private DatabaseReference mDatabase;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,7 +52,7 @@ public class CadastroLugar extends AppCompatActivity {
 
         calendar = Calendar.getInstance();
 
-        dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        dateFormat = new SimpleDateFormat("dd/MM/yyyy  HH:mm");
         data = dateFormat.format(calendar.getTime());
         dataLugar = findViewById(R.id.dataTextView);
         dataLugar.setText(data);

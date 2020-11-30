@@ -76,4 +76,5 @@ public class Lugar implements Comparable <Lugar>, Serializable {
     public int compareTo(Lugar lugar) {
         return this.DataCadastro.compareTo(lugar.DataCadastro);
     }
+
 }
