@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -28,6 +29,8 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView lugarRecyclerView;
     private DatabaseReference mDatabase;
 
+    Context context;
+
 
 
 
@@ -43,6 +46,8 @@ public class MainActivity extends AppCompatActivity {
         lugarRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         lugar = new ArrayList<>();
 
+        context = this;
+
 
         mDatabase = FirebaseDatabase.getInstance().getReference("Lugar");
 
@@ -56,9 +61,8 @@ public class MainActivity extends AppCompatActivity {
                     lugar.add(l);
 
                 }
-                adapter = new ListLocalizacaoAdapter(lugar);
+                adapter = new ListLocalizacaoAdapter(lugar, context);
                 lugarRecyclerView.setAdapter(adapter);
-
 
             }
 
@@ -66,8 +70,8 @@ public class MainActivity extends AppCompatActivity {
             public void onCancelled(@NonNull DatabaseError error) {
 
             }
-        });
 
+        });
 
     }
 

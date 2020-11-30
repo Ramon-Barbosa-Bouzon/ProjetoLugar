@@ -148,6 +148,7 @@ public class CadastroLugar extends AppCompatActivity {
 
     public void onClick(View view){
         mDatabase = FirebaseDatabase.getInstance().getReference().child("Lugar");
+        String erro = "";
 
 
         descricaoLugar = findViewById(R.id.editTextDescricaoLugar);
@@ -164,17 +165,28 @@ public class CadastroLugar extends AppCompatActivity {
         String id = nomeLugar.getText().toString() + calendar.getTimeInMillis();
 
 
+        if(nomeLugar.getText().toString().equals(erro)){
+            Toast.makeText(this, "Nome é obrigatório", Toast.LENGTH_SHORT).show();
 
-        mDatabase.child(id).setValue(lugar);
+        }else{
+            mDatabase.child(id).setValue(lugar);
+            mDatabase.push();
+
+            Toast.makeText(CadastroLugar.this, "Dados Salvos com sucesso", Toast.LENGTH_LONG).show();
+
+            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+            startActivity(intent);
+        }
+
+    }
+
+    public void onEditarLugar(String key, Lugar l){
+
+        l.setNomeLugar(nomeLugar.getText().toString());
+        l.setDescricao(descricaoLugar.getText().toString());
+
+        mDatabase.child(key).setValue(l);
         mDatabase.push();
-
-
-
-        Toast.makeText(CadastroLugar.this, "Dados Salvos com sucesso", Toast.LENGTH_LONG).show();
-
-
-        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-        startActivity(intent);
 
     }
 
