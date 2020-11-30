@@ -11,7 +11,6 @@ import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -21,15 +20,10 @@ import android.widget.Toast;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.ramon.projeto_localizacao.R;
-import com.ramon.projeto_localizacao.model.DateHelper;
-import com.ramon.projeto_localizacao.model.ListLocalizacaoAdapter;
 import com.ramon.projeto_localizacao.model.Lugar;
 
-import java.text.DateFormat;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
 
 public class CadastroLugar extends AppCompatActivity {
 
