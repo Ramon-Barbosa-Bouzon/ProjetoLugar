@@ -40,6 +40,7 @@ public class ListLocalizacaoAdapter extends RecyclerView.Adapter {
 
 
 
+
     private Calendar calendar;
     private SimpleDateFormat dateFormat;
     private String data;

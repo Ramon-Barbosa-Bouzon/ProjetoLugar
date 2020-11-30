@@ -5,6 +5,7 @@
         android:color="@color/AzulMetalico"
         android:width="10dp"
         />
+    
     <corners android:radius="20dp"/>
 
 </shape>

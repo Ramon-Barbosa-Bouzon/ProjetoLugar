@@ -15,6 +15,7 @@ public class Lugar implements Comparable <Lugar>, Serializable {
     private double Long;
     private String id;
 
+
     @Exclude
     public String getId() {
         return id;

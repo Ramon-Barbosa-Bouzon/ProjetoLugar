@@ -37,6 +37,7 @@ public class CadastroLugar extends AppCompatActivity {
     private LocationListener locationListener;
     private static final int REQUEST_CODE_GPS = 1001;
 
+
     private double latitudeAtual;
     private double longitudeAtual;
     private EditText nomeLugar;
