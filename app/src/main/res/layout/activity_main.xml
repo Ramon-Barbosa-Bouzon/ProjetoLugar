@@ -6,7 +6,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/buttomnovo"
+    android:background="@drawable/textures3"
+
     tools:context=".ui.MainActivity">
 
 
@@ -29,7 +30,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        android:background="@drawable/buttomnovo"
+
         />
 
     <androidx.recyclerview.widget.RecyclerView
@@ -52,8 +53,8 @@
         android:layout_marginBottom="20pt"
         android:onClick="onClick"
         android:text="Cadastrar novo lugar"
-        android:textColor="@color/amarilho"
-        android:background="@drawable/cormuitoloca"
+        android:textColor="@color/Azul"
+        android:backgroundTint="@color/VERDI"
         android:textSize="20dp"
         app:layout_constraintTop_toBottomOf="@+id/recyclerViewLugar"
         app:layout_constraintRight_toRightOf="parent"
